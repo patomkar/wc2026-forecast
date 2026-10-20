@@ -1,0 +1,41 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # full history so freeze-commit timestamps are checkable
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Verify pre-registration hashes
+        run: python scripts/prereg.py verify --event WC2026
+
+      - name: Rebuild results dataset from source
+        run: |
+          python scripts/build_results.py
+          git diff --exit-code data/results_actual.csv
+
+      - name: Run tests
+        run: python -m pytest tests/ -q
+
+      - name: Reproduce evaluation metrics
+        run: python evaluation/verify.py --bootstrap 2000
+
+      - name: Upload metrics
+        uses: actions/upload-artifact@v4
+        with:
+          name: metrics
+          path: evaluation/metrics.json
