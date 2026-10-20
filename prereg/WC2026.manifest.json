@@ -1,0 +1,27 @@
+{
+  "event": "WC2026",
+  "frozen_at_utc": "2026-10-20T01:21:33.787022+00:00",
+  "deadline_utc": "2026-06-11T15:00:00Z",
+  "before_deadline": false,
+  "git_commit": "7765d4f85f74c8849639a79930a7f01cabed1ee2",
+  "git_branch": "main",
+  "artifacts": {
+    "data/ratings_20260610.csv": {
+      "sha256": "7dd8590af1873592629ad484c20bba8d006ae48a7fdb9dfd1b3f555a3f54d445",
+      "bytes": 2711
+    },
+    "forecast/model.py": {
+      "sha256": "f8c2f0ea051be1b5a59f852aedec1875b387310b166956b53bfe5dbcac320ca5",
+      "bytes": 14106
+    },
+    "forecast/output/probabilities.json": {
+      "sha256": "204ff5d7f86f8f4340e5ca5e48a8842a8834fda1d292fe5ae584199e0bc7f9e5",
+      "bytes": 40642
+    },
+    "forecast/FROZEN_FORECAST.md": {
+      "sha256": "13932d6d65a51c82e0d23cedbc809e0f41fc02ec132b2ae73d1eab8f0ec56369",
+      "bytes": 45549
+    }
+  },
+  "combined_sha256": "d2b51d34d1b1347e896421c55d9ce9884d794e659e9e23a50bea4ef50bdbccd7"
+}
